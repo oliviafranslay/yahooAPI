@@ -15,8 +15,9 @@ with open('ticker.csv', 'r') as csvf:
         row = "".join(row)
         ticker.append(row)
 
-# period1 = int(time.mktime(date.today().timetuple()))
-period1 = int(time.mktime(datetime.datetime(2022, 6, 13, 23, 59).timetuple()))
+period1 = int(time.mktime(date.today().timetuple()))
+# period1 = int(time.mktime(datetime.datetime(2022, 6, 7, 23, 59).timetuple()))
+# period2 = int(time.mktime(datetime.datetime(2022, 6, 25, 23, 59).timetuple()))
 period2 = int(time.mktime(date.today().timetuple()))
 interval = '1d' # 1d, 1m
 
@@ -32,6 +33,8 @@ for i in ticker:
     frames.append(dfnew)
 
 result = pd.concat(frames)
+
+result.to_csv('data.csv', index=False)
 
 jsonArray = []
 with open('data.csv') as csvf:
